@@ -1,0 +1,21 @@
+
+<img src="/image/<%=@image.filepath%>" width="150" height="100">
+<br></br>
+
+<%@image.comments.each do |comment|%>
+ <%=@user.name%>: <%=comment.content%>
+
+<br></br>
+<%end%>
+
+
+
+
+
+
+
+
+<form method="post" action="/image/<%=@image.id%>/comment">
+Comment: <input name="comment" type="text">
+<button type="submit" value="submit">Comment</button>
+</form>

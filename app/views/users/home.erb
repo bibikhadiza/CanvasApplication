@@ -1,0 +1,52 @@
+<html>
+<head>
+ <link href="/stylesheets/style.css" rel="stylesheet">
+ </head>
+
+<body>
+  <a href="/users/logout">Log Out</a>
+
+
+  <div class="dropdown">
+    <button class="dropbtn">Search Canvas</button>
+    <div class="dropdown-content">
+      <%Category.all.each do |category|%>
+      <%@category = category.name %>
+      <a href="/image/<%=@category%>"><%=@category%></a>
+      <%end%>
+
+    </div>
+  </div>
+<br></br>
+welcome to your homepage!
+upload your artwork
+
+ <form action="/image/new" method="post" enctype="multipart/form-data">
+   <input type="file" id="file" name="image"  aria-label="File browser example">
+   <button type="submit">Upload</button>
+   <br></br>
+  Choose a Art Category for Your Artwork:
+  <br></br>
+  <%Category.all.each do |category|%>
+  <input type="checkbox" name="category_name" id="Category Name" value="<%=category.id%>"><%=category.name%></input></br>
+<%end%>
+<br></br>
+
+
+
+</form>
+
+
+here are all your artwork
+<br><br>
+<%@user.images.each do |image|%>
+
+<a href="/image/<%=image.id%>/display"><img src="../image/<%=image.filepath%>" width="150" height="100"></a>
+
+
+<br></br>
+<%end%>
+
+
+</body>
+</html>

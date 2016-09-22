@@ -1,0 +1,3 @@
+public/users/*
+db/*.sqlite
+Gemfile.lock
