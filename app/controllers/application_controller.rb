@@ -29,7 +29,12 @@ class ApplicationController < Sinatra::Base
     end
 
     def current_user
-      User.find(session[:id])
+      @user ||= User.find(session[:id]) #if the user if false not in session
+      # if @user                        #find the user in the database and set the
+      #   @user                         #user to the session else just return the
+      # else                             #user. this way I am not going back to
+      #   @user = User.find(session[:id])   #the database and looking for the user
+      # end                               #whih lingers the app process.
     end
   end
 

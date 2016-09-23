@@ -43,7 +43,7 @@ class UserController < ApplicationController
 
   get "/users/:id/homepage" do
     @user = User.find(params[:id])
-    erb :'users/page'
+    erb :'users/index'
   end
 
 

@@ -1,0 +1,7 @@
+<%@category.images.each do |image|%>
+  <img src="../image/<%=image.filepath%>" width="150" height="100"></a>
+
+  <%user = User.find(image.user_id)%>
+  Uploaded by: <a href="/users/<%=user.id%>/homepage"><%=user.name%></a>
+<%end%>
+<br></br>

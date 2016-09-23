@@ -21,7 +21,7 @@
     <div class="dropdown-content">
       <%Category.all.each do |category|%>
       <%@category = category.name %>
-      <a href="/image/<%=@category%>"><%=@category%></a>
+      <a href="/categories/<%=@category%>"><%=@category%></a>
       <%end%>
 
     </div>
@@ -31,7 +31,7 @@ welcome to your homepage <%=@user.name%>!
 upload your artwork
 <br></br>
 
- <form action="/image/new" method="post" enctype="multipart/form-data">
+ <form action="/images/new" method="post" enctype="multipart/form-data">
    <input type="file" id="file" name="image"  aria-label="File browser example">
    <button type="submit">Upload</button>
    <br></br>
@@ -53,7 +53,7 @@ here are all your artwork
 <br><br>
 <%@user.images.each do |image|%>
 
-<a href="/image/<%=image.id%>/display"><img src="../image/<%=image.filepath%>" width="150" height="100"></a>
+<a href="/images/<%=image.id%>"><img src="../image/<%=image.filepath%>" width="150" height="100"></a>
 
 
 <br></br>

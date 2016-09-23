@@ -1,0 +1,40 @@
+<% created_by = @image.user %>
+<% if created_by == current_user%>
+<form action="/images/<%=@image.id%>/delete" method="post">
+
+<input id="hidden" type="hidden" name="_method" value="delete">
+<button type="submit" value="submit">Delete</button>
+</form>
+<%end%>
+
+
+<img src="/image/<%=@image.filepath%>" width="150" height="100">
+<br></br>
+
+<%@image.comments.each do |comment|%>
+ <%=@user.name%>: <%=comment.content%>
+<br></br>
+<%end%>
+
+
+
+
+
+<form method="post" action="/comments/<%=@image.id%>/new">
+Comment: <input name="comment" type="text">
+<button type="submit" value="submit">Comment</button>
+</form>
+
+
+
+add like and dislike here
+
+<a href="/images/<%=@image.id%>/like">Like</a>
+
+<%=@image.likes.count%>
+
+
+
+
+<a href="/images/<%=@image.id%>/dislike">Dislike</a>
+<%=@image.dislikes.count%>
