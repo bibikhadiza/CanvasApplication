@@ -1,3 +1,8 @@
+<%if flash.has?(:message)%>
+<%=flash[:message]%>
+<%end%>
+<br></br>
+
 signup!
 <form method="post" action="/users/signup">
 <input type="text" name="name" placeholder="Name" required>

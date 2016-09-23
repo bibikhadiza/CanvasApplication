@@ -4,6 +4,15 @@
  </head>
 
 <body>
+
+  <%if flash.has?(:message)%>
+  <%=flash[:message]%>
+  <%end%>
+  <br></br>
+
+
+
+
   <a href="/users/logout">Log Out</a>
 
 
@@ -18,8 +27,9 @@
     </div>
   </div>
 <br></br>
-welcome to your homepage!
+welcome to your homepage <%=@user.name%>!
 upload your artwork
+<br></br>
 
  <form action="/image/new" method="post" enctype="multipart/form-data">
    <input type="file" id="file" name="image"  aria-label="File browser example">
@@ -27,8 +37,10 @@ upload your artwork
    <br></br>
   Choose a Art Category for Your Artwork:
   <br></br>
+
+
   <%Category.all.each do |category|%>
-  <input type="checkbox" name="category_name" id="Category Name" value="<%=category.id%>"><%=category.name%></input></br>
+  <input type="checkbox" name="category_name[]" id="Category Name" value="<%=category.id%>"><%=category.name%></input></br>
 <%end%>
 <br></br>
 

@@ -1,3 +1,7 @@
+require 'rack-flash'
+
+
+
 class UserController < ApplicationController
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
@@ -32,6 +36,8 @@ class UserController < ApplicationController
     if logged_in?
       @user = User.find(session[:id])
       erb :'/users/home'
+    else
+      redirect "/"
     end
   end
 
