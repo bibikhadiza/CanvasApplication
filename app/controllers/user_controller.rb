@@ -25,9 +25,9 @@ class UserController < ApplicationController
       if @user && @user.authenticate(params[:password])
         session[:id] = @user.id
         redirect "/users/home"
-      end
     else
-      redirect "/login"
+      redirect "/"
+    end
     end
   end
 
