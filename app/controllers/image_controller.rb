@@ -6,7 +6,7 @@ class ImageController < ApplicationController
   post '/images/new' do
     logged_in?
     @user = current_user
-    if params[:category_name]
+    if params[:category_name] && params[:image]
       @image = Image.new(filepath: params[:image][:filename])
       @image.user_id = @user.id
       @image.save
@@ -20,7 +20,13 @@ class ImageController < ApplicationController
         cat.save
       end
     else
-      flash[:message] = "****Please Select Art Category****"
+      if !params[:category_name] && !params[:image]
+        flash[:message] = "**Please select an image and a category**"
+      elsif !params[:category_name]
+        flash[:message] = "****Please Select Art Category****"
+      else
+      flash[:message] = "***Please select an Image***"
+      end
     end
     redirect "/users/home"
   end
