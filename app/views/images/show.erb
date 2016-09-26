@@ -1,3 +1,13 @@
+<html>
+<head>
+   <link href="/stylesheets/style.css" rel="stylesheet">
+</head>
+
+
+
+
+
+<body>
 <% created_by = @image.user %>
 <% if created_by == current_user%>
 <form action="/images/<%=@image.id%>/delete" method="post">
@@ -6,13 +16,14 @@
 <button type="submit" value="submit">Delete</button>
 </form>
 <%end%>
+<br></br>
 
 
 <img src="/image/<%=@image.filepath%>" width="150" height="100">
 <br></br>
 
 <%@image.comments.each do |comment|%>
- <%=@user.name%>: <%=comment.content%>
+ <%=comment.user.name%>: <%=comment.content%>
 <br></br>
 <%end%>
 
@@ -21,20 +32,21 @@
 
 
 <form method="post" action="/comments/<%=@image.id%>/new">
-Comment: <input name="comment" type="text">
-<button type="submit" value="submit">Comment</button>
+<textarea name="comment" type="text" placeholder="Add your comment!"></textarea>
+</br>
+<input type="submit" value="Add Comment">
 </form>
 
 
-
-add like and dislike here
-
-<a href="/images/<%=@image.id%>/like">Like</a>
+<a href="/images/<%=@image.id%>/like">&#128513;
+</a>
 
 <%=@image.likes.count%>
 
 
 
 
-<a href="/images/<%=@image.id%>/dislike">Dislike</a>
+<a href="/images/<%=@image.id%>/dislike">&#128542;</a>
 <%=@image.dislikes.count%>
+</body>
+</html>
